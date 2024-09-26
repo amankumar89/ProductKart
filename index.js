@@ -1,5 +1,4 @@
 import express from "express";
-import { engine } from "express-handlebars";
 
 const port = 3001;
 const app = express();
@@ -7,15 +6,7 @@ const app = express();
 import adminRoutes from "./routes/admin.route.js";
 import shopRoutes from "./routes/shop.route.js";
 
-app.engine(
-  "hbs",
-  engine({
-    extname: "hbs",
-    defaultLayout: "main-layout",
-    layoutsDir: "views/layouts",
-  })
-);
-app.set("view engine", "hbs");
+app.set("view engine", "ejs");
 app.set("views", "views");
 
 app.use(express.urlencoded({ extended: true }));
