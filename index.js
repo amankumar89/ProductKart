@@ -7,6 +7,7 @@ const app = express();
 import adminRoutes from "./routes/admin.route.js";
 import shopRoutes from "./routes/shop.route.js";
 
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 app.use("/admin", adminRoutes);
