@@ -8,6 +8,9 @@ router.get("/", (req, res) => {
     products: adminData.products,
     pageTitle: "My Shop",
     path: "/",
+    hasProducts: adminData.products.length > 0,
+    activeShop: true,
+    productCSS: true,
   });
 });
 
