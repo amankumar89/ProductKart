@@ -6,22 +6,18 @@ const app = express();
 import adminRoutes from "./routes/admin.route.js";
 import shopRoutes from "./routes/shop.route.js";
 
+import errorController from "./controllers/error.controller.js";
+
 app.set("view engine", "ejs");
 app.set("views", "views");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-app.use("/admin", adminRoutes.routes);
+app.use("/admin", adminRoutes);
 app.use("/", shopRoutes);
 
-app.use((req, res) => {
-  res.render("404", {
-    products: [],
-    pageTitle: "Page Not Found",
-    path: "/404",
-  });
-});
+app.use("", errorController);
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
